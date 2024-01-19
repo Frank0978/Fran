@@ -1,43 +1,45 @@
-##### <h1> Escaparate Virtual </h1>
+# Entrega TEMA 4
 
-<P>
-Para la realizacion de los complementos a a帽adir en nuestra pagina web, se han utilizado las siguientes paginas web correspondientes. Para la realizacion del escaparate virtual.
-</P>馃挱 Webgrafia:
+# Realizado por francis, cataline y Alejandro
 
-<li>https://convertio.co/es/: Para convertir los audios y ficheros a otros formatos.
+Añadir un carrusel a la interfaz del escaparate virtual y mejorar el aspecto e interactividad de una interfaz web
 
-<li>https://www.audacityteam.org/: Para recortar los audios.
+## Carrusel
 
-<li>https://clipchamp.com/es/: Para recortar el video y a帽adir efectos.
+Para añadir un carrusel a nuestra página se han realizado los siguientes pasos:
 
-<li>https://www.adobe.com/es/(Adobe Aftter Effects): Para crear el banner.
+1. Seleccionamos el elemento con id "contenidoCentro" y le añadimos un nuevo hijo "contenedorCarousel".
+2. A dicho "contenedorCarousel" le añadimos como hijo una etiqueta "h1" con el texto "Novedades y promociones"
+3. Al mismo nivel que el h1 anterior, añadimos otro div con id carousel, que va a ser el que contenga los diferentes elementos del carrusel.
+4. Al elemento "carousel" le añadimos 4 etiquestas "img", que van a ser cada una de las imagenes que tenga nuestro carrusel, cada una de ellas tiene la clase "imagenCarousel" con la que vamos a modificar su posicionamiento, para que todas se vean unas encima de otras, y sólo la primera de ellas sea visible.
+5.  Creamos un setInterval que se ejecutara cada 3 segundos que ejecutará la función "siguiente".
+6. Dicha funcion siguiente oculta la imagen que actualmente es visible, y muestra la siguiente
 
-<li>https://pandao.github.io/editor.md/en.html: Para la creaci贸n del README.
+## Efecto Scroll
 
+Se ha realizado una animación asociada al scroll de la página, de forma que cuando el usuario vaya bajando sobre la página las imágenes que aparecen en la zona central aumentan su tamaño un 20%. Para ello se ha realizado lo siguiente:
 
-<h2> Pasos al Video: </h2>
+1. Capturamos el evento scroll de la página (window), de forma que cada vez que se capture se lance una función.
+2. En dicha función capturamos qué posición tiene cada una de las imágenes y la comparamos con la posición del scroll respecto a la pantalla.
+3. Si la imagen está visible en la pantalla le aplicamos una animación de zoom de 1.2 puntos (20%), con una duración de 1 segundo.
 
-<li> El primer paso fue descargar el video de el siguiente enlace: https://commons.wikimedia.org/wiki/File:21st_Century_Temperature_and_Precipitation_Scenarios.ogv. 
-      
-<li> El segundo paso fue editar el video para reducir el tiempo de reproducci贸n a 10 segundos, para ello usamos el editor Clipchamp. 
-      
-<li> Para el efecto usamos el mismo editor mencionado anteriormente nos fuimos a la secci贸n de efectos y a帽adimos el efecto Vaporwave. 
-      
-<li> Luego, convertimos el video a los formatos pedidos. Para ello, usamos la pagina web Convertio para transformarlo en MP4, OGV y WEBM. 
-      
-<li> Por ultimo, buscamos una imagen para a帽adirla en el video como poster.
+## Microinteracciones
 
-<h2> Pasos al Audio: </h2>
+Se han realizado las siguientes microinteracciones:
 
-<li> El primer paso fue descargar el audio de la pagina web: 
-      https://www.bensound.com/royalty-free-music?tag[]=sad
-      Al final nos decidimos por Creative Minds.
-<li> Luego pasamos a recortar el tiempo de reproducci贸n a 1 minuto, para ello usamos la aplicaci贸n Audacity.
+1. Cuando se pasa el ratón sobre una imagen de la zona central se le asigna una clase "fondoImagen", la cual le modifica el color de fondo.
+2. Cuando se pasa el raton sobre uno de los botones del menu secundario de la página (el de la zona central) se le asigna una clase que modifica su color de fondo.
+3. Cuando se pasa el ratón sobre un enlace del pie de página, se le añade una clase para cambiar el color de dicho enlace.
 
-<h2> Pasos al Banner Animado: </h2>
+## Menú flotante
 
-<li>Utilizando los logos de la pagina web y la herramienta de editar "Adobe After Effects" con el plug-in de "AE Juice" desarrollado para exportar videos de After Effects en formato GIF,realice el banner animado para nuestra pagina web tiendeo.
+Para hacer que el menu de navegación principal de la página se quede flotando en todo momento se ha realizado lo siguiente:
 
-<li>Con el efecto de "Transform" de After Effects, solo tuve que poner un punto de ancla para la imagen para la posicion de la foto, por los efectos de mover y los bordes de tama帽o para los efectos y todo el video se esta moviendo a 29.97 FPS para disimular una animaci贸n en "tiempo real".
-
-###End
+1. Se captura el evento scroll de window de forma que cuando sobrepase los 80 píxeles se le asigne la clase "menuFixed" al contenedor de dicho menú.
+2. En la clase "menuFixed" cambiamos el posicionamiento a position:fixed, con lo cual se va a quedar fijado a la pantalla, además le añadimos un fondo y le modificamos el z-index para que siempre esté por encima de otros contenidos de la página.
+3. Para hacerlo más vistoso, se le ha añadido una animación a los botones de la parte izquierda de dicho menú, para ello se ha realizado lo siguiente:
+    1. Se añade un div vacío como hermano de cada enlace, dicho div tiene la clase "line".
+    2. Dicho div por defecto tiene un ancho de 0%, se le da un tamaño y color con la ayuda de css, además tendrá un posicionamiento absoluto y centrado sobre su elemento padre.
+    3. Cuando se hace hover sobre un elemento del menú, seleccionamos el elemento div que le acompaña (utilizando la funcion "next()") y se le aplica una animación para cambiarle el tamaño, de forma que pase de 0% a 85% al hacer hover y de 85% a 0% al perder el hover.
+    4. Con lo anterior conseguimos el efecto deseado de que cuando se pase con el raton sobre el elemento aparezca una línea bajo él que crece al sobrevolar el elemento y desaparece al dejar de hacerlo.
+    5. Además se le ha realizado un cambio de tamaño al propio elemento sobre el que se hace hover, de forma que se haga más énfasis en que está "seleccionado".
